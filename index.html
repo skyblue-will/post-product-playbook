@@ -9,19 +9,18 @@
     <meta property="og:description" content="The next era of software isn't platforms with millions of users. It's millions of platforms with one user each.">
     <meta property="og:type" content="article">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@400;500;600&display=swap');
         
         :root {
             --text: #1a1a1a;
-            --text-secondary: #6b6b6b;
+            --text-secondary: #5a5a5a;
             --bg: #faf9f7;
             --surface: #f0eeeb;
             --accent: #1a6b5a;
-            --accent-light: rgba(26, 107, 90, 0.08);
+            --accent-light: rgba(26, 107, 90, 0.06);
             --divider: #ddd8d0;
-            --question-bg: #fdf6ec;
+            --question-text: #7a4a20;
             --question-border: #c8956c;
-            --question-text: #8a5a30;
         }
         
         @media (prefers-color-scheme: dark) {
@@ -31,11 +30,10 @@
                 --bg: #141210;
                 --surface: #1e1c19;
                 --accent: #5bb89e;
-                --accent-light: rgba(91, 184, 158, 0.1);
+                --accent-light: rgba(91, 184, 158, 0.08);
                 --divider: #2e2a26;
-                --question-bg: rgba(200, 149, 108, 0.08);
-                --question-border: #c8956c;
                 --question-text: #d4a574;
+                --question-border: #c8956c;
             }
         }
         
@@ -49,43 +47,67 @@
             font-size: 18px;
             -webkit-font-smoothing: antialiased;
         }
+
+        /* Subtle grain texture */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.025;
+            pointer-events: none;
+            z-index: 999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 256px 256px;
+        }
         
         /* Hero */
         .hero {
-            padding: 12vh 1.5rem 8vh;
-            max-width: 720px;
+            padding: 14vh 1.5rem 6vh;
+            max-width: 680px;
             margin: 0 auto;
         }
         
         .hero h1 {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(2.8rem, 6vw, 4.2rem);
+            font-size: clamp(2.8rem, 6vw, 4rem);
             font-weight: 800;
             letter-spacing: -0.02em;
-            line-height: 1.1;
-            margin-bottom: 1rem;
+            line-height: 1.08;
+            margin-bottom: 1.25rem;
         }
         
         .hero .subtitle {
-            font-size: 1.2rem;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.15rem;
             color: var(--text-secondary);
             font-style: italic;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
         }
         
         .hero .byline {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--text-secondary);
+            letter-spacing: 0.02em;
         }
         
         .hero .byline a {
             color: var(--accent);
             text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .hero .byline a:hover {
+            border-bottom-color: var(--accent);
         }
         
         /* Article */
         article {
-            max-width: 720px;
+            max-width: 680px;
             margin: 0 auto;
             padding: 0 1.5rem 8rem;
         }
@@ -94,17 +116,21 @@
             margin-bottom: 1.5rem;
         }
         
+        strong { color: var(--text); font-weight: 600; }
+        
         /* Opening */
         .opening {
-            font-size: 1.35rem;
+            font-size: 1.3rem;
             line-height: 1.6;
-            margin-bottom: 4rem;
-            padding-bottom: 4rem;
+            margin-bottom: 5rem;
+            padding-bottom: 5rem;
             border-bottom: 1px solid var(--divider);
+            letter-spacing: -0.01em;
         }
         
         .opening strong {
             color: var(--accent);
+            font-weight: 600;
         }
         
         /* Sections */
@@ -112,20 +138,23 @@
             margin-bottom: 5rem;
         }
         
-        .section-wide {
-            margin-bottom: 8rem;
-        }
-        
         /* Question headers */
         .question {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
             font-style: italic;
             color: var(--question-text);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.75rem;
             padding-left: 1.25rem;
             border-left: 3px solid var(--question-border);
+            line-height: 1.35;
+        }
+
+        /* Lead paragraph — first graf after question gets slight emphasis */
+        .lead {
+            font-size: 1.1rem;
+            font-weight: 500;
         }
         
         /* Highlight */
@@ -133,48 +162,85 @@
             background: var(--accent-light);
             border-left: 3px solid var(--accent);
             padding: 1.25rem 1.5rem;
-            margin: 2rem 0;
+            margin: 2.5rem 0;
             border-radius: 0 4px 4px 0;
             font-weight: 500;
+            line-height: 1.65;
         }
+
+        .highlight p { margin-bottom: 0; }
         
-        /* The centrepiece */
+        /* The centrepiece — the climactic moment */
         .centrepiece {
             text-align: center;
-            padding: 6rem 1rem;
-            margin: 4rem -1.5rem;
+            padding: 8rem 2rem;
+            margin: 6rem -1.5rem;
             background: var(--surface);
+            position: relative;
         }
+
+        .centrepiece::before,
+        .centrepiece::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+            margin: 0 auto;
+        }
+
+        .centrepiece::before { margin-bottom: 3rem; }
+        .centrepiece::after { margin-top: 3rem; }
         
         .centrepiece p {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            font-size: clamp(1.6rem, 4vw, 2.2rem);
             font-weight: 700;
-            line-height: 1.3;
+            line-height: 1.4;
             letter-spacing: -0.02em;
             margin-bottom: 0;
         }
+
+        /* Post-centrepiece text */
+        .post-centrepiece {
+            margin-top: 6rem;
+            margin-bottom: 6rem;
+        }
         
-        /* Use cases — plain text, no pills */
+        /* Use cases — clean two-column with subtle markers */
         .use-cases {
             columns: 2;
             column-gap: 2rem;
             list-style: none;
-            margin: 1.5rem 0 2rem;
+            margin: 1.5rem 0 2.5rem;
+            padding: 0;
         }
         
         .use-cases li {
-            padding: 0.4rem 0;
+            padding: 0.5rem 0 0.5rem 1rem;
             color: var(--text-secondary);
-            font-size: 1rem;
+            font-size: 0.95rem;
             break-inside: avoid;
+            position: relative;
+        }
+
+        .use-cases li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--divider);
+            transform: translateY(-50%);
         }
         
         /* Economics */
         .econ-grid {
             display: grid;
             gap: 0.5rem;
-            margin: 1.5rem 0;
+            margin: 2rem 0 2.5rem;
         }
         
         .econ-row {
@@ -193,8 +259,16 @@
         }
         
         .econ-row.total {
-            border: 2px solid var(--accent);
+            background: var(--accent);
+            color: #fff;
             font-weight: 600;
+            border-radius: 4px;
+            margin-top: 0.25rem;
+        }
+
+        .econ-row.total .cost,
+        .econ-row.total span {
+            color: #fff;
         }
         
         /* Inline stat */
@@ -207,13 +281,13 @@
         hr {
             border: none;
             border-top: 1px solid var(--divider);
-            margin: 5rem 0;
+            margin: 6rem 0;
         }
         
         /* Closing */
         .closing {
             text-align: center;
-            padding-top: 4rem;
+            padding-top: 2rem;
         }
         
         .closing-line {
@@ -228,18 +302,24 @@
         .closing-line .bright { color: var(--accent); }
         
         .author {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--text-secondary);
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
         
         .author a {
             color: var(--accent);
             text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .author a:hover {
+            border-bottom-color: var(--accent);
         }
         
         .companion {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-secondary);
         }
         
@@ -251,14 +331,15 @@
         /* Mobile */
         @media (max-width: 600px) {
             .use-cases { columns: 1; }
-            .centrepiece { margin: 3rem -1.5rem; padding: 4rem 1.5rem; }
+            .centrepiece { margin: 4rem -1.5rem; padding: 5rem 1.5rem; }
+            .hero { padding-top: 10vh; }
         }
     </style>
 </head>
 <body>
     
     <header class="hero">
-        <h1>The Post-Product Playbook</h1>
+        <h1>The Post-Product<br>Playbook</h1>
         <p class="subtitle">An elevator pitch for sceptics.</p>
         <p class="byline">By <a href="https://www.linkedin.com/in/willpalmeruk/">Will Palmer</a></p>
     </header>
@@ -273,11 +354,11 @@
         <div class="section">
             <p class="question">"But AI Can't Build Real Software"</p>
             
-            <p>It already does. Today. In production.</p>
+            <p class="lead">It already does. Today. In production.</p>
             
             <p>We have a management system for an amateur operatic society — meetings, actions, members, PDF minutes — built entirely by an AI agent, deployed on modern infrastructure, used by real people to run a real organisation.</p>
             
-            <p>Not a demo. Not a prototype. The actual system they rely on.</p>
+            <p>Not a demo. Not a prototype. <strong>The actual system they rely on.</strong></p>
             
             <p>It was built in days, not months. It costs pennies to run. When they want a change, they describe it in plain English and it's live by tomorrow.</p>
         </div>
@@ -312,11 +393,13 @@
         <div class="section">
             <p class="question">"People Won't Trust AI-Built Software"</p>
             
-            <p>Correct. And that's the entire insight.</p>
+            <p class="lead">Correct. And that's the entire insight.</p>
             
             <p>The tech world is racing toward full autonomy — more AI, less human, automate everything. But most people aren't in the tech world. Most people heard about AI on the news and aren't sure if it's going to take their job or leak their data.</p>
             
-            <div class="highlight">You don't sell them "AI-built software." You sell them "a managed service with professional oversight." Same thing. Completely different emotional response.</div>
+            <div class="highlight">
+                <p>You don't sell them "AI-built software." You sell them "a managed service with professional oversight." Same thing. Completely different emotional response.</p>
+            </div>
             
             <p>The human layer — security engineers, pen testing, incident response — isn't a cost centre. It's the trust licence. It's what turns a scary AI capability into something a committee treasurer will sign off on.</p>
             
@@ -326,10 +409,10 @@
         <hr>
         
         <!-- Q4: The Missing Piece -->
-        <div class="section-wide">
+        <div class="section">
             <p class="question">"So What's Missing?"</p>
             
-            <p>Security. That's it. That's the missing piece of the puzzle.</p>
+            <p class="lead">Security. That's it. That's the missing piece.</p>
             
             <p>The AI capability is here. The infrastructure is free at small scale. The economics work. The demand exists — millions of organisations running on spreadsheets and WhatsApp because nothing else fits.</p>
             
@@ -337,7 +420,7 @@
             
             <p>An AI agent can build you a beautiful membership system in a day. But can it guarantee that system isn't leaking your members' data? Can it prove there are no vulnerabilities?</p>
             
-            <p>No. Because the API is the building, not the inspector. You can build in smoke alarms and fire doors, but someone still needs to test whether the fire doors actually open.</p>
+            <p>No. Because the AI is the builder, not the inspector. You can build in smoke alarms and fire doors, but someone still needs to test whether the fire doors actually open.</p>
             
             <p>Automated checks get you 95% of the way. But the final sign-off — the "yes, this is actually secure" — requires a human who's accountable.</p>
         </div>
@@ -346,7 +429,7 @@
             <p>The AI builds.<br>The human secures.<br>That's the full product.</p>
         </div>
         
-        <div class="section-wide">
+        <div class="post-centrepiece">
             <p>Without the security layer, this is a toy. With it, it's a business. It's the trust licence. It's the moat. And it's what no one else in the AI-builds-apps space is taking seriously.</p>
         </div>
         
@@ -356,13 +439,17 @@
         <div class="section">
             <p class="question">"This Is Just Outsourced Development"</p>
             
-            <p>No. Outsourced development is a one-time transaction: you pay, you get code, the developer leaves, and you're stuck maintaining it or paying again.</p>
+            <p class="lead">No.</p>
+            
+            <p>Outsourced development is a one-time transaction: you pay, you get code, the developer leaves, and you're stuck maintaining it or paying again.</p>
             
             <p>This is an ongoing relationship. The agent that built your system stays. It knows your setup, your data model, your preferences. When you say "add a field for allergies on the signup form" it doesn't need a brief, a spec, or a sprint planning meeting. It just does it.</p>
             
             <p>And crucially — there's a human security team behind it that audits continuously.</p>
             
-            <div class="highlight">SaaS replaced buying software with renting it. This replaces renting generic software with owning bespoke software — maintained for you, forever.</div>
+            <div class="highlight">
+                <p>SaaS replaced buying software with renting it. This replaces renting generic software with owning bespoke software — maintained for you, forever.</p>
+            </div>
         </div>
         
         <!-- Q6 -->
@@ -405,7 +492,7 @@
         <div class="section">
             <p class="question">"Who Actually Wants This?"</p>
             
-            <p>There are <span class="stat">5.5 million</span> small businesses in the UK — <span class="stat">99.2%</span> of all UK businesses. The plumber using a notebook. The estate agent whose CRM doesn't match how they actually work. The nursery managing allergies, ratios, and parent comms across three different apps. The restaurant doing bookings on one system, stock on another, and staff rotas on a third.</p>
+            <p>There are <span class="stat">5.5 million</span> small businesses in the UK — <span class="stat">99.2%</span> of all UK businesses are SMEs. The plumber using a notebook. The estate agent whose CRM doesn't match how they actually work. The nursery managing allergies, ratios, and parent comms across three different apps. The restaurant doing bookings on one system, stock on another, and staff rotas on a third.</p>
             
             <p>Every one of them is using software that doesn't quite fit — or no software at all. These aren't underserved markets. They're <strong>unserved</strong> markets. Products that fit them perfectly have never existed because the economics didn't allow it. Now they do.</p>
         </div>
