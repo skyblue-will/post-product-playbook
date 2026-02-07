@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Post-Product Playbook | Will Palmer</title>
+    <meta name="description" content="An elevator pitch for sceptics. Why AI agents replace SaaS for the long tail of software.">
+    <meta property="og:title" content="The Post-Product Playbook">
+    <meta property="og:description" content="An elevator pitch for sceptics. The next era of software isn't platforms with millions of users. It's millions of platforms with one user each.">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Post-Product Playbook">
+    <meta name="twitter:description" content="An elevator pitch for sceptics.">
+    <style>
+        :root {
+            --text: #1a1a1a;
+            --text-secondary: #666;
+            --bg: #fafafa;
+            --accent: #0066cc;
+            --question: #b35900;
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --text: #e8e8e8;
+                --text-secondary: #999;
+                --bg: #121212;
+                --accent: #4da6ff;
+                --question: #ff9933;
+            }
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            font-size: 18px;
+        }
+        
+        article {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .byline {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .byline a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .byline a:hover {
+            text-decoration: underline;
+        }
+        
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            font-style: italic;
+            margin-bottom: 3rem;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+        
+        h2.question {
+            color: var(--question);
+            font-style: italic;
+        }
+        
+        strong {
+            font-weight: 600;
+        }
+        
+        ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        hr {
+            border: none;
+            border-top: 1px solid var(--text-secondary);
+            opacity: 0.3;
+            margin: 3rem 0;
+        }
+        
+        .highlight {
+            background: rgba(0, 102, 204, 0.08);
+            border-left: 3px solid var(--accent);
+            padding: 1rem 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            .highlight {
+                background: rgba(77, 166, 255, 0.08);
+            }
+        }
+        
+        .closing-line {
+            font-size: 1.2rem;
+            font-style: italic;
+            text-align: center;
+            margin-top: 3rem;
+            color: var(--text-secondary);
+        }
+        
+        .closing {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--text-secondary);
+            opacity: 0.8;
+        }
+        
+        .closing p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <article>
+        <h1>The Post-Product Playbook</h1>
+        <p class="byline">By <a href="https://www.linkedin.com/in/willpalmeruk/">Will Palmer</a></p>
+        <p class="subtitle">An elevator pitch for sceptics.</p>
+        
+        <h2>Start Here: What Is a Product?</h2>
+        
+        <p>A product is a compromise. Someone built something general enough to sell to thousands of people. You adapted to it. You learned its quirks, worked around its limitations, and accepted that the features you actually needed were "on the roadmap" or "not how the platform works."</p>
+        
+        <p>This was rational. Custom software cost £50–500k. So you bought the closest approximation and lived with the gap between what you wanted and what you got.</p>
+        
+        <p>That gap is about to close. Not because products are getting better — they've been optimising for 20 years and the gap is still there. It closes because <strong>building custom just stopped being expensive.</strong></p>
+        
+        <hr>
+        
+        <h2 class="question">"But AI Can't Build Real Software"</h2>
+        
+        <p>It already does. Today. In production.</p>
+        
+        <p>We have a management system for an amateur operatic society — meetings, actions, members, PDF minutes — built entirely by an AI agent, deployed on modern infrastructure, used by real people to run a real organisation. Not a demo. Not a prototype. The actual system they rely on.</p>
+        
+        <p>It was built in days, not months. It costs pennies to run. When they want a change, they describe it in plain English and it's live by tomorrow.</p>
+        
+        <p>This isn't theoretical. It's deployed.</p>
+        
+        <h2 class="question">"Fine, But That's One App. It Won't Scale"</h2>
+        
+        <p>Why not? The patterns are remarkably similar across use cases:</p>
+        
+        <ul>
+            <li>A freelancer's CRM is: contacts, interactions, pipeline, reminders</li>
+            <li>A family's shared system is: calendar, tasks, meals, finances</li>
+            <li>A landlord's tool is: properties, tenants, maintenance, income</li>
+            <li>A club's platform is: members, events, communications, documents</li>
+        </ul>
+        
+        <p>Different specifics, same bones. An AI agent that's built one of these can build a thousand variations. Each one bespoke. Each one exactly what the person asked for. The 500th build is dramatically faster and better than the 5th because every build teaches the system.</p>
+        
+        <h2 class="question">"People Won't Trust AI-Built Software"</h2>
+        
+        <p>Correct. And that's the entire insight.</p>
+        
+        <p>The tech world is racing toward full autonomy — more AI, less human, automate everything. It's exciting and it's where the investment is going. But most people aren't in the tech world. Most people heard about AI on the news and aren't sure if it's going to take their job or leak their data.</p>
+        
+        <div class="highlight">
+            <p style="margin-bottom: 0;"><strong>You don't sell them "AI-built software." You sell them "a managed service with professional oversight."</strong></p>
+        </div>
+        
+        <p>Same thing. Completely different emotional response.</p>
+        
+        <p>The human layer — security engineers reviewing builds, pen testing, incident response — isn't a cost centre. It's the trust licence. It's what turns a scary AI capability into something a committee treasurer will sign off on, an insurer will underwrite, and a regulator won't blink at.</p>
+        
+        <p>The companies that win won't be the most autonomous. They'll be the ones who made autonomy feel safe.</p>
+        
+        <hr>
+        
+        <h2 class="question">"So What's Missing?"</h2>
+        
+        <p>Security. That's it. That's the missing piece of the puzzle.</p>
+        
+        <p>The AI capability is here. Agents can build production software, maintain it, evolve it. The infrastructure is free at small scale. The economics work. The demand exists — millions of organisations running on spreadsheets and WhatsApp because nothing else fits.</p>
+        
+        <p>Everything is in place except the bit that makes it trustworthy.</p>
+        
+        <p>An AI agent can build you a beautiful membership system in a day. But can it guarantee that system isn't leaking your members' data? Can it prove there are no vulnerabilities? Can it stand behind the claim that it's safe?</p>
+        
+        <p>No. Because the API is the building, not the inspector. You can build in smoke alarms and fire doors, but someone still needs to test whether the fire doors actually open.</p>
+        
+        <p>That's pen testing. Red teaming. Security auditing. Human experts trying to break what the system says is secure. Automated checks get you 95% of the way — an LLM can audit a codebase and catch most issues. But the final sign-off, the "yes, this is actually secure," requires a human who's accountable.</p>
+        
+        <div class="highlight">
+            <p style="margin-bottom: 0;"><strong>The AI builds. The human secures. That's the full product.</strong></p>
+        </div>
+        
+        <p>Without the security layer, this is a toy. With it, it's a business. The security is what turns "I asked an AI to build me an app" into "I have a professionally managed, audited system." It's the trust licence. It's the moat. And it's what no one else in the AI-builds-apps space is taking seriously.</p>
+        
+        <hr>
+        
+        <h2 class="question">"This Is Just Outsourced Development"</h2>
+        
+        <p>No. Outsourced development is a one-time transaction: you pay, you get code, the developer leaves, and you're stuck maintaining it or paying again.</p>
+        
+        <p>This is an ongoing relationship. The agent that built your system stays. It knows your setup, your data model, your preferences. When you say "add a field for allergies on the signup form" it doesn't need a brief, a spec, or a sprint planning meeting. It just does it.</p>
+        
+        <p>And crucially — there's a human security team behind it that audits continuously. Outsourced dev gives you code and waves goodbye. This gives you a living system with permanent oversight.</p>
+        
+        <p><strong>SaaS replaced buying software with renting it. This replaces renting generic software with owning bespoke software — maintained for you, forever.</strong></p>
+        
+        <h2 class="question">"The Economics Don't Work"</h2>
+        
+        <p>Let's check.</p>
+        
+        <p><strong>Build cost:</strong> A few pounds in AI compute per customer app.<br>
+        <strong>Hosting:</strong> Free tier (Vercel, Supabase) — a small user may never hit paid.<br>
+        <strong>Maintenance:</strong> An AI agent handling change requests costs fractions of a penny per interaction.<br>
+        <strong>Human security:</strong> One engineer oversees 50–100 apps. Tooling improves that ratio over time.</p>
+        
+        <p><strong>Customer pays:</strong> £15–60/month depending on tier.</p>
+        
+        <p>At 200 customers on the middle tier (£30/mo), that's £72k/year revenue. Infrastructure costs: near zero. AI compute: a few hundred. One security engineer: £50–60k loaded. <strong>You're profitable at 200 customers with one hire.</strong></p>
+        
+        <p>Compare SaaS: you need a product team, a support team, a sales team, infrastructure at scale, and you're burning cash until you hit thousands of customers. The economics here are <em>better</em> than SaaS, not worse.</p>
+        
+        <hr>
+        
+        <h2 class="question">"Who Actually Wants This?"</h2>
+        
+        <p>There are over 300,000 voluntary organisations in the UK alone — clubs, societies, charities, parish councils — managing themselves with spreadsheets and WhatsApp because nothing on the market fits them. Millions of freelancers cobbling together 5 different tools. These aren't underserved markets. They're <strong>unserved</strong> markets. Products that fit them perfectly have never existed because the economics didn't allow it. Now they do.</p>
+        
+        <h2 class="question">"Why Should I Believe You?"</h2>
+        
+        <p>Because we've already done it. A real system, for a real organisation, built and maintained by an agent, running in production. Not a pitch deck with mockups. A URL you can visit.</p>
+        
+        <p>The committee treasurer using a shared Google Drive doesn't know a bespoke system is now affordable. The freelancer juggling 5 apps doesn't know they could have one that does exactly what they need.</p>
+        
+        <p>They'll know when someone shows them.</p>
+        
+        <p class="closing-line">The next era of software isn't platforms with millions of users.<br>It's millions of platforms with one user each.</p>
+        
+        <div class="closing">
+            <p>Will Palmer is a product manager building agentic systems that build software. Connect on <a href="https://www.linkedin.com/in/willpalmeruk/">LinkedIn</a>.</p>
+        </div>
+    </article>
+</body>
+</html>
